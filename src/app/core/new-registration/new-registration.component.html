@@ -1,0 +1,208 @@
+<div class="container">
+    <div class="form-container">
+      <div class="form-header">
+        <h2>Apply for New Connection</h2>
+        <p class="text-muted">Please fill in the form below to request a connection.</p>
+      </div>
+      <form [formGroup]="connectionForm" (ngSubmit)="onSubmit()" novalidate>
+        <!-- First Name -->
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">First Name*</label>
+            <input type="text" class="form-control" id="firstName" formControlName="firstName" placeholder="Enter your first name" (blur)="markAsTouched('firstName')">
+            <div *ngIf="connectionForm.get('firstName')?.invalid && (connectionForm.get('firstName')?.dirty || connectionForm.get('firstName')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('firstName')?.errors?.['required']">First Name is required.</div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Last Name*</label>
+            <input type="text" class="form-control" id="lastName" formControlName="lastName" placeholder="Enter your last name" (blur)="markAsTouched('lastName')">
+            <div *ngIf="connectionForm.get('lastName')?.invalid && (connectionForm.get('lastName')?.dirty || connectionForm.get('lastName')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('lastName')?.errors?.['required']">Last Name is required.</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Mobile Number -->
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label for="mobileNumber" class="form-label">Mobile Number*</label>
+            <input type="text" class="form-control" id="mobileNumber" formControlName="mobileNumber" placeholder="Enter your mobile number" (blur)="markAsTouched('mobileNumber')">
+            <div *ngIf="connectionForm.get('mobileNumber')?.invalid && (connectionForm.get('mobileNumber')?.dirty || connectionForm.get('mobileNumber')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('mobileNumber')?.errors?.['required']">Mobile Number is required.</div>
+              <div *ngIf="connectionForm.get('mobileNumber')?.errors?.['pattern']">Mobile Number must be 10 to 15 digits.</div>
+            </div>
+          </div>
+  
+          <!-- Email Address -->
+          <div class="col-md-6">
+            <label for="serviceEmail" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="serviceEmail" formControlName="serviceEmail" placeholder="Enter your email address">
+            <div class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+        </div>
+  
+        <!-- Address -->
+        <div class="mt-3">
+          <label for="address" class="form-label">Address*</label>
+          <textarea class="form-control" id="address" formControlName="address" rows="3" placeholder="Enter your address" (blur)="markAsTouched('address')"></textarea>
+          <div *ngIf="connectionForm.get('address')?.invalid && (connectionForm.get('address')?.dirty || connectionForm.get('address')?.touched)" class="text-danger">
+            <div *ngIf="connectionForm.get('address')?.errors?.['required']">Address is required.</div>
+          </div>
+        </div>
+  
+        <!-- State -->
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label for="state" class="form-label">State*</label>
+            <select class="form-select" id="state" formControlName="state" (blur)="markAsTouched('state')">
+              <option value="">Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <div *ngIf="connectionForm.get('state')?.invalid && (connectionForm.get('state')?.dirty || connectionForm.get('state')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('state')?.errors?.['required']">State is required.</div>
+            </div>
+          </div>
+  
+          <!-- City -->
+          <div class="col-md-6">
+            <label for="city" class="form-label">City*</label>
+            <select class="form-select" id="city" formControlName="city" (blur)="markAsTouched('city')">
+              <option value="">Choose...</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+            <div *ngIf="connectionForm.get('city')?.invalid && (connectionForm.get('city')?.dirty || connectionForm.get('city')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('city')?.errors?.['required']">City is required.</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Type of Connection -->
+        <div class="mt-3">
+          <label class="form-label">Type of Connection*</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="commercial" formControlName="connectionType" value="Commercial" (blur)="markAsTouched('connectionType')">
+            <label class="form-check-label" for="commercial">Commercial</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="residential" formControlName="connectionType" value="Residential" (blur)="markAsTouched('connectionType')">
+            <label class="form-check-label" for="residential">Residential</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" id="industrial" formControlName="connectionType" value="Industrial" (blur)="markAsTouched('connectionType')">
+            <label class="form-check-label" for="industrial">Industrial</label>
+          </div>
+          <div *ngIf="connectionForm.get('connectionType')?.invalid && (connectionForm.get('connectionType')?.dirty || connectionForm.get('connectionType')?.touched)" class="text-danger">
+            <div *ngIf="connectionForm.get('connectionType')?.errors?.['required']">Type of Connection is required.</div>
+          </div>
+        </div>
+  
+        <!-- Preferred Voltage -->
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label for="voltage" class="form-label">Preferred Voltage*</label>
+            <input type="number" class="form-control" id="voltage" formControlName="voltage" placeholder="Enter preferred voltage" (blur)="markAsTouched('voltage')">
+            <div *ngIf="connectionForm.get('voltage')?.invalid && (connectionForm.get('voltage')?.dirty || connectionForm.get('voltage')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('voltage')?.errors?.['required']">Preferred Voltage is required.</div>
+            </div>
+          </div>
+  
+          <!-- Load Requirement -->
+          <div class="col-md-6">
+            <label for="loadRequirement" class="form-label">Load Requirement*</label>
+            <input type="number" class="form-control" id="loadRequirement" formControlName="loadRequirement" placeholder="Enter load requirement" (blur)="markAsTouched('loadRequirement')">
+            <div *ngIf="connectionForm.get('loadRequirement')?.invalid && (connectionForm.get('loadRequirement')?.dirty || connectionForm.get('loadRequirement')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('loadRequirement')?.errors?.['required']">Load Requirement is required.</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Type of Supply -->
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label for="supplyType" class="form-label">Type of Supply*</label>
+            <select class="form-select" id="supplyType" formControlName="supplyType" (blur)="markAsTouched('supplyType')">
+              <option value="">Choose...</option>
+              <option value="Single Phase">Single Phase</option>
+              <option value="Three Phase">Three Phase</option>
+            </select>
+            <div *ngIf="connectionForm.get('supplyType')?.invalid && (connectionForm.get('supplyType')?.dirty || connectionForm.get('supplyType')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('supplyType')?.errors?.['required']">Type of Supply is required.</div>
+            </div>
+          </div>
+  
+          <!-- Ownership Status -->
+          <div class="col-md-6">
+            <label for="ownershipStatus" class="form-label">Ownership Status*</label>
+            <select class="form-select" id="ownershipStatus" formControlName="ownershipStatus" (blur)="markAsTouched('ownershipStatus')">
+              <option value="">Choose...</option>
+              <option value="Owner">Owner</option>
+              <option value="Renter">Renter</option>
+            </select>
+            <div *ngIf="connectionForm.get('ownershipStatus')?.invalid && (connectionForm.get('ownershipStatus')?.dirty || connectionForm.get('ownershipStatus')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('ownershipStatus')?.errors?.['required']">Ownership Status is required.</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Property Type -->
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label for="propertyType" class="form-label">Property Type*</label>
+            <select class="form-select" id="propertyType" formControlName="propertyType" (blur)="markAsTouched('propertyType')">
+              <option value="">Choose...</option>
+              <option value="Residential">Residential</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Industrial">Industrial</option>
+            </select>
+            <div *ngIf="connectionForm.get('propertyType')?.invalid && (connectionForm.get('propertyType')?.dirty || connectionForm.get('propertyType')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('propertyType')?.errors?.['required']">Property Type is required.</div>
+            </div>
+          </div>
+  
+          <!-- Proof of Ownership -->
+          <div class="col-md-6">
+            <label for="proofOwnership" class="form-label">Proof of Ownership*</label>
+            <input type="file" class="form-control" id="proofOwnership" formControlName="proofOwnership" (blur)="markAsTouched('proofOwnership')">
+            <div *ngIf="connectionForm.get('proofOwnership')?.invalid && (connectionForm.get('proofOwnership')?.dirty || connectionForm.get('proofOwnership')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('proofOwnership')?.errors?.['required']">Proof of Ownership is required.</div>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Government ID -->
+        <div class="row g-3 mt-3">
+          <div class="col-md-6">
+            <label for="governmentId" class="form-label">Government ID*</label>
+            <input type="file" class="form-control" id="governmentId" formControlName="governmentId" (blur)="markAsTouched('governmentId')">
+            <div *ngIf="connectionForm.get('governmentId')?.invalid && (connectionForm.get('governmentId')?.dirty || connectionForm.get('governmentId')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('governmentId')?.errors?.['required']">Government ID is required.</div>
+            </div>
+          </div>
+        </div>
+  
+        
+        <div class="mt-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="declaration" formControlName="declaration" (blur)="markAsTouched('declaration')">
+            <label class="form-check-label" for="declaration">I declare that the information provided is accurate.</label>
+            <div *ngIf="connectionForm.get('declaration')?.invalid && (connectionForm.get('declaration')?.dirty || connectionForm.get('declaration')?.touched)" class="text-danger">
+              <div *ngIf="connectionForm.get('declaration')?.errors?.['required']">Declaration is required.</div>
+          
+            </div>
+          </div>
+        </div>
+      
+        <!-- Submit Button -->
+        <div class="mt-3">
+          <button type="submit" class="btn btn-primary" [disabled]="connectionForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  

@@ -1,0 +1,33 @@
+.a {
+
+    
+    background-image: url('/assets/background.jpg');
+    background-size: cover;      /* Makes the image cover the container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image from repeating */
+    width: 100%;                 /* Full width of viewport */
+    height: 100vh;               /* Full height of viewport */
+    overflow: hidden;            /* Hides any overflow */
+}
+.card {
+
+    border: none; /* Remove card borders */
+    border-radius: 10px; /* Rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effects */
+}
+.card:hover {
+    transform: translateY(-10px); /* Slight lift effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+}
+.card-title {
+    color:darkcyan; 
+}
+.card-text {
+    color: darkmagenta; 
+}
+.text-center h1, .text-center p {
+    color: #fff; 
+}
+.container {
+    padding: 2rem;
+}

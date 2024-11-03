@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand"><strong>Ebill App</strong></a>
+  
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+        </ul>
+        <ng-container *ngIf="isLoggedIn(); else showAuthButtons">
+          <ng-container *ngIf="isAdmin(); else showUserLinks">
+            <div class="d-flex align-items-center">
+              <a class="text-white mx-3 text-decoration-none" routerLink="/admin/users">Registered Users</a>
+              <a class="text-white mx-3 text-decoration-none" routerLink="/admin/messages">Messages</a>
+              <a class="text-white mx-3 text-decoration-none" routerLink="/admin/feedback">Feedback Messages</a>
+              <a class="text-white mx-3 text-decoration-none" routerLink="/admin/connections">Connections</a>
+              <span class="text-white mx-4">Welcome: {{ getUserEmail() }}</span>
+              <button class="btn btn-danger mx-1" (click)="logout()">Logout</button>
+            </div>
+          </ng-container>
+          <ng-template #showUserLinks>
+            <div class="d-flex align-items-center">
+                <button class="btn btn-info mx-1 text-white" routerLink="/home/newconnection">New connection</button>
+              <a class="text-white mx-3 text-decoration-none" routerLink="/user/payment">Payment</a>
+              <a class="text-white mx-3 text-decoration-none" routerLink="/user/history">History</a>
+              <a class="text-white mx-3 text-decoration-none" routerLink="/user/feedback">Feedback</a>
+              <a class="text-white mx-3 text-decoration-none" routerLink="/user/contactUs">Contact Us</a>
+              <span class="text-white mx-4">Welcome: {{ getUserEmail() }}</span>
+              <button class="btn btn-danger mx-1" (click)="logout()">Logout</button>
+            </div>
+          </ng-template>
+        </ng-container>
+        <ng-template #showAuthButtons>
+        
+          <button class="btn btn-primary mx-1" routerLink="/login">Login</button>
+          <button class="btn btn-success mx-1" routerLink="/signup">Signup</button>
+        </ng-template>
+      </div>
+    </div>
+  </nav>
+  
